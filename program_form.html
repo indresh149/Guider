@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Guide Application Form</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #f0f0f0;
+        }
+        .container {
+          max-width: 600px;
+          margin: 20px auto;
+          padding: 20px;
+          background-color: #fff;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+          text-align: center;
+          color: #333;
+        }
+        label {
+          display: block;
+          margin-bottom: 5px;
+          color: #555;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 20px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          box-sizing: border-box;
+        }
+        textarea {
+          height: 100px;
+        }
+        .file-input {
+          margin-bottom: 20px;
+        }
+        .submit-button {
+          display: block;
+          width: 100%;
+          padding: 10px;
+          background-color: hsl(42, 94%, 55%);
+          color: #fff;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+        .submit-button:hover {
+          background-color: hsl(42, 94%, 55%);
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #fff;
+            color: #555;
+          }
+          
+          select:hover {
+            border-color: #999;
+          }
+          
+          select:focus {
+            outline: none;
+            border-color: #66afe9;
+            box-shadow: 0 0 5px rgba(102, 175, 233, 0.6);
+          }
+          
+      </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Apply for Student Guide</h1>
+      <form id="submit-application-form" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="contact1">Contact 1:</label>
+        <input type="text" id="contact1" name="contact1" required />
+
+        <label for="contact2">Contact 2:</label>
+        <input type="text" id="contact2" name="contact2" required />
+
+        <label for="course">Course Details:</label>
+        <select id="course" name="course" required>
+          <option value="Mentorship Course">Mentorship Course</option>
+          <option value="Test series">Test series</option>
+          <option value="Doubt Solutions">Doubt Solutions</option>
+          <option value="Mental Health Sessions">Mental Health Sessions</option>
+          <!-- Add other course options here -->
+        </select>
+
+        <input type="submit" value="Submit Application" class="submit-button" />
+      </form>
+    </div>
+
+    <script>
+        document.getElementById("submit-application-form").addEventListener("submit", async function (event) {
+            event.preventDefault(); // Prevent form submission
+        
+            try {
+              // Collect form data
+              const name = document.getElementById("name").value;
+              const email = document.getElementById("email").value;
+              const contact1 = document.getElementById("contact1").value;
+              const contact2 = document.getElementById("contact2").value;
+              const courseSelect = document.getElementById("course");
+              const selectedCourse = courseSelect.value;
+              console.log(selectedCourse);
+              
+              const formData = {
+                name: name,
+                email: email,
+                contact1: contact1,
+                contact2: contact2,
+                course: selectedCourse,
+              };
+         console.log(formData);
+
+              // Send form data to the backend
+              const response = await fetch("/submit-form", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+              });
+        
+              if (!response.ok) {
+                throw new Error("Failed to submit application");
+              }
+        
+              const data = await response.json();
+              alert(data.message);
+              window.location.href = "/"; // Display success message
+            } catch (error) {
+              console.error("Error processing form data:", error);
+              alert("Failed to process form data. Please try again.");
+            }
+          });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guider bhiya/ Mentor</title>
+    <!-- 
+    - favicon
+  -->
+  <link rel=" icon" href="assets/images/logo.jpg" >
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&family=Poppins:wght@400;500&display=swap"
+    rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- 
+    - preload images
+  -->
+  <link rel="preload" as="image" href="./assets/images/hero-bg.svg">
+  <link rel="preload" as="image" href="./assets/images/studygirl.avif">
+  <link rel="preload" as="image" href="./assets/images/hero-banner-2.jpg">
+  <link rel="preload" as="image" href="./assets/images/hero-shape-1.svg">
+  <link rel="preload" as="image" href="./assets/images/hero-shape-2.png">
+  <style>
+   .containerr {
+    text-align: center;
+    background: #f5f5f5;
+}
+
+.sub-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.teams {
+    margin: 10px;
+    padding: 22px;
+    max-width: 30%;
+    cursor: pointer;
+    transition: 0.4s;
+    box-sizing: border-box;
+}
+
+.teams:hover {
+    background: #ddd;
+    border-radius: 12px;
+}
+
+.teams img {
+    width: 200px;
+    height: 200px;
+}
+
+.name {
+    padding: 12px;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.desig {
+    font-style: italic;
+    color: #888;
+}
+
+.about {
+
+    margin: 20px 0;
+    font-weight: lighter;
+    color: #4e4e4e;
+}
+
+.social-links {
+    margin: 14px;
+}
+
+.social-links a {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    transition: .4s;
+}
+
+.social-links a:hover {
+    transform: scale(1.5);
+}
+
+.social-links a i {
+    color:hsl(42, 94%, 55%);
+}
+
+@media screen and (max-width: 600px) {
+    .teams {
+        max-width: 100%;
+    }
+}
+  </style>
+</head>
+<body id="top">
+      <!-- 
+    - #HEADER
+  -->
+  <header class="header" data-header>
+    <div class="container">
+
+      <a href="#" class="logo">
+        <img src="./assets/images/logo.jpg" width="162" height="50" alt="EduWeb logo" >
+      </a>
+
+      <nav class="navbar" data-navbar>
+
+        <div class="wrapper">
+          <a href="#" class="logo">
+            <img src="./assets/images/logo.jpg" width="162" height="50" alt="EduWeb logo">
+          </a>
+
+          <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+          </button>
+        </div>
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <a href="index.html" class="navbar-link" data-nav-link style="font-size: larger;"> Home</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="about.html" class="navbar-link" data-nav-link style="font-size: larger;">About</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="ourmentor.html" class="navbar-link" data-nav-link style="font-size: larger;">Our Mentors</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="program.html" class="navbar-link" data-nav-link style="font-size: larger;"> Program</a>
+          </li>
+
+
+          <li class="navbar-item">
+            <a href="contact.html" class="navbar-link" data-nav-link style="font-size: larger;">Contact</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="career.html" class="navbar-link" data-nav-link style="font-size: larger;">Career</a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <div class="header-actions" id="headerActions">
+        <script>
+          function checkLoggedIn() {
+            const token = document.cookie.split('; ').find(row => row.startsWith('jwt='));
+           console.log(token);
+            if (token) {
+              const decodedToken = parseJwt(token.split('=')[1]);
+              const username = decodedToken.email; // Assuming the JWT token contains the email
+              document.getElementById('headerActions').innerHTML = `
+                <p>Welcome, ${username}</p>
+                <a href="/logout">Logout</a>
+              `;
+            } else {
+              document.getElementById('headerActions').innerHTML = `
+                <a href="/login">Login</a>
+                <a href="/signup">Signup</a>
+              `;
+            }
+          }
+          
+          function parseJwt(token) {
+            const base64Url = token.split('.')[1];
+            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            const jsonPayload = decodeURIComponent(atob(base64).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+            return JSON.parse(jsonPayload);
+          }
+          
+          window.onload = checkLoggedIn;
+          
+        </script> </div>
+  </header>
+<!-- mentor -->
+
+<img src="./assets/images/hero-shape-2.png" width="622" height="551" alt="" class="shape hero-shape-2">
+<div class="containerr" style="margin-top: 200px; margin-bottom: 200px;">
+  
+<img src="./assets/images/hero-shape-2.png" width="622" height="551" alt="" class="shape hero-shape-2">
+  <h2 style="color: hsl(351, 83%, 61%) ;"> Our Mentors</h2>
+  <div class="sub-container">
+    <div class="teams">
+      <img src="assets/images/Abhay Garg.jpeg" alt="" style="display: inline-block; 
+      vertical-align: middle;">
+      <div class="name">Abhay Garg</div>
+      <div class="desig">Biology Mentor</div>
+      <div class="about" > Full Marks in Biology NEET UG: 2021 (360/360) Mentorship Abhay Garg has demonstrated remarkable expertise in the field of Biology, evident in his outstanding performance. In the 2021 NEET UG exam, he achieved a perfect score of 360 out of 360 in Biology.</div>
+  
+      <div class="social-links">
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-instagram"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+      </div>
+  </div>
+
+  <div class="teams">
+    <img src="assets/images/Fazeel Mohsin.jpeg" alt="" style="display: inline-block; 
+    vertical-align: middle;">
+    <div class="name">Fazeel Mohsin</div>
+    <div class="desig">NEET - Guider</div>
+    <div class="about">Fazeel is an alumnus of AIIMS Delhi, He is Secure AIr 19 in NEET Exam & completed his medical education with distinction from one of India's premier medical institutions. His academic journey at AIIMS has equipped him with a comprehensive understanding of medicine and healthcare. </div>
+
+    <div class="social-links">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-instagram"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+    </div>
+</div>
+
+<div class="teams">
+  <img src="assets/images/Rashika.jpeg" alt="" style="display: inline-block; 
+  vertical-align: middle;">
+  <div class="name"> Rashika</div>
+  <div class="desig">NEET - Guider</div>
+  <div class="about"> 
+    Rashmika, NEET guide and biology expert at AIIMS Bilaspur, empowers students with insights and strategies for success. Her dedication goes beyond academics, fostering resilience and determination in aspiring medical professionals. </div>
+
+  <div class="social-links">
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-instagram"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+  </div>
+</div>
+
+  
+<img src="./assets/images/hero-shape-2.png" width="622" height="551" alt="" class="shape hero-shape-2">
+  
+
+      <div class="teams">
+          <img src="assets/images/Akshay Jaiswal.jpeg" alt="" style="display: inline-block; 
+          vertical-align: middle;">
+          <div class="name">Akshay Kumar  </div>
+          <div class="desig"> JEE Mains and Advance</div>
+          <div class="about">He is holding a B.Tech degree from the Indian Institute of Technology (IIT) BHU. In addition to his academic accomplishments, he has garnered over two years of significant experience mentoring students for the JEE Mains and Advance exams. </div>
+
+          <div class="social-links">
+              <a href="#"><i class="fa fa-facebook"></i></a>
+              <a href="#"><i class="fa fa-instagram"></i></a>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+          </div>
+      </div>
+
+      <div class="teams">
+          <img src="assets/images/Shashank Mishra.jpeg" alt="" style="display: inline-block; 
+          vertical-align: middle;">
+          <div class="name">Shashank Mishra </div>
+          <div class="desig">JEE - Guider</div>
+          <div class="about">He is holds a Bachelor of Technology degree from the Indian Institute of Technology
+             BHU, where he specialized in Computer Science and Engineering (CSE). Subject Expertise: With a strong foundation in Physics and Mathematics, Shashank has established himself as a subject expert in these domains. </div>
+
+          <div class="social-links">
+              <a href="#"><i class="fa fa-facebook"></i></a>
+              <a href="#"><i class="fa fa-instagram"></i></a>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+          </div>
+      </div>
+
+    
+    <div class="teams">
+      <img src="assets/images/Devendra Dhaker.JPG" alt="" style="display: inline-block; 
+      vertical-align: middle;">
+      <div class="name">Devendra Dhaker </div>
+      <div class="desig">JEE - Guider</div>
+      <div class="about">Devendra holds a Bachelor of Technology (B.Tech) degree from the esteemed Indian Institute of Technology (IIT) Patna, a testament to his academic prowess and dedication to excellence in the field of engineering.</div>
+
+      <div class="social-links">
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-instagram"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+      </div>
+  </div>
+
+  </div>
+</div>
+
+<img src="./assets/images/hero-shape-2.png" width="622" height="551" alt="" class="shape hero-shape-2">
+ <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer" style="background-image: url('./assets/images/footer-bg.png')">
+
+    <div class="footer-top section" style="margin-bottom: 10px;">
+      <div class="container grid-list">
+
+        <div class="footer-brand">
+
+          <a href="#" class="logo">
+            <img src="./assets/images/logo.jpg" width="162" height="30" alt="EduWeb logo" style="border-radius: 20%; height: 80px; width: 100px;">
+          </a>
+
+
+          <div class="wrapper" style="margin-top: 20px;">
+            <span class="span">Add:</span>
+
+            <address class="address">Noida sector 62, India</address>
+          </div>
+
+          <div class="wrapper">
+            <span class="span">Call:</span>
+
+            <a href="tel:+011234567890" class="footer-link">+91 76675 27670</a>
+          </div>
+
+          <div class="wrapper">
+            <span class="span">Email:</span>
+
+            <a href="mailto:info@eduweb.com" class="footer-link">info@guiderbhaiya.com</a>
+          </div>
+
+        </div>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title"> Platform</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">About</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Courses</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Instructor</a>
+          </li>
+
+
+          <li>
+            <a href="#" class="footer-link">Purchase Guide</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Links</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Contact Us</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Gallery</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Career</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">FAQ's</a>
+          </li>
+
+        </ul>
+
+        <div class="footer-list">
+
+          <p class="footer-list-title">Contacts</p>
+
+          <p class="footer-list-text">
+            Enter your email address to register to our newsletter subscription
+          </p>
+
+          <form action="" class="newsletter-form">
+            <input type="email" name="email_address" placeholder="Your email" required class="input-field">
+
+            <button type="submit" class="btn has-before">
+              <span class="span" style="color: black;">Subscribe</span>
+
+              <ion-icon name="arrow-forward-outline" aria-hidden="true" style="color: black;"></ion-icon>
+            </button>
+          </form>
+
+          <ul class="social-list">
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="https://www.linkedin.com/company/guider-bhaiya/" class="social-link">
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="https://www.instagram.com/guider_bhaiya?igsh=MWttZ2prN2dlMTJ6cg==" class="social-link">
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-youtube"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+
+        <p class="copyright">
+          Copyright 2024 All Rights Reserved by <a href="#" class="copyright-link">RitikaSingh</a>
+        </p>
+
+      </div>
+    </div>
+
+  </footer>
+
+
+
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="back top top" data-back-top-btn>
+    <ion-icon name="chevron-up" aria-hidden="true" style="color: black;"></ion-icon>
+  </a>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/script.js" defer></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>

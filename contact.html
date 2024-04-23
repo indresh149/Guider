@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guider bhiya/ contact</title>
+    <!-- 
+    - favicon
+  -->
+  <link rel=" icon" href="assets/images/logo.jpg" >
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/style.css">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&family=Poppins:wght@400;500&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- 
+    - preload images
+  -->
+  <link rel="preload" as="image" href="./assets/images/hero-bg.svg">
+  <link rel="preload" as="image" href="./assets/images/studygirl.avif">
+  <link rel="preload" as="image" href="./assets/images/hero-banner-2.jpg">
+  <link rel="preload" as="image" href="./assets/images/hero-shape-1.svg">
+  <link rel="preload" as="image" href="./assets/images/hero-shape-2.png">
+  <style>
+  .containerr {
+
+  max-width: 1100px;
+  width: 100%;
+  background: #fff;
+  border-radius: 6px;
+  padding: 20px 60px 30px 40px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.containerr .contentt {
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.containerr .contentr .left-side {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  position: relative;
+}
+.contentt .left-side::before {
+  content: "";
+  position: absolute;
+  height: 70%;
+  width: 2px;
+  right: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #afafb6;
+}
+.contentt .left-side .details {
+  margin: 14px;
+  text-align: center;
+}
+.contentt .left-side .details i {
+  font-size: 30px;
+  color: #ffc107;
+  margin-bottom: 10px;
+}
+.contentt .left-side .details .topic {
+  font-size: 18px;
+  font-weight: 500;
+}
+.contentt .left-side .details .text-one,
+.contentt .left-side .details .text-two {
+  font-size: 14px;
+  color: #afafb6;
+}
+
+.containerr .contentt .right-side {
+  width: 75%;
+  margin-left: 75px;
+}
+.contentt .right-side .topic-text {
+  font-size: 23px;
+  font-weight: 600;
+  color: #ffc107;
+}
+.right-side .input-box {
+  height: 55px;
+  width: 100%;
+  margin: 12px 0;
+}
+.right-side .input-box input,
+.right-side .input-box textarea {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: #f0f1f8;
+  border-radius: 6px;
+  padding: 0 15px;
+  resize: none;
+}
+.right-side .message-box {
+  min-height: 110px;
+}
+.right-side .input-box textarea {
+  padding-top: 6px;
+}
+.right-side .button {
+  display: inline-block;
+  margin-top: 12px;
+}
+.right-side .button input[type="button"] {
+  color: #fff;
+  font-size: 18px;
+  outline: none;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: #ffc107;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.button input[type="button"]:hover {
+  background: #ffc107;
+}
+
+@media (max-width: 950px) {
+  .container {
+    width: 90%;
+    padding: 30px 40px 40px 35px;
+  }
+  .containerr .contentt .right-side {
+    width: 75%;
+    margin-left: 55px;
+  }
+}
+@media (max-width: 820px) {
+  .container {
+    margin: 40px 50;
+    height: 100%;
+  }
+  .containerr .contentt {
+    flex-direction: column-reverse;
+  }
+  .containerr .contentt .left-side {
+    width: 100%;
+    flex-direction: row;
+    margin-top: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .containerr .contentt .left-side::before {
+    display: none;
+  }
+  .containerr .contentt .right-side {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+.right-side form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.right-side .input-box {
+  width: 100%;
+  margin: 12px 0;
+}
+
+.right-side .input-box input,
+.right-side .input-box textarea {
+  height: 40px; /* Adjust the height as needed */
+  width: calc(100% - 30px); /* Adjust the width and padding */
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: #f0f1f8;
+  border-radius: 6px;
+  padding: 0 15px;
+  resize: none;
+  color: #000;
+}
+
+.right-side .message-box textarea {
+  height: 120px; /* Adjust the height as needed */
+}
+
+.right-side .button {
+  margin-top: 12px;
+}
+
+.right-side .button input[type="submit"] {
+  color: #fff;
+  font-size: 18px;
+  outline: none;
+  border: none;
+  padding: 10px 20px; /* Adjust padding as needed */
+  border-radius: 6px;
+  background: #ffc107;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.right-side .button input[type="submit"]:hover {
+  background: #ffc107; /* Adjust the hover color as needed */
+}
+
+  </style>
+</head>
+<body id="top">
+      <!-- 
+    - #HEADER
+  -->
+  <header class="header" data-header>
+    <div class="container">
+
+      <a href="#" class="logo">
+        <img src="./assets/images/logo.jpg" width="162" height="50" alt="EduWeb logo" >
+      </a>
+
+      <nav class="navbar" data-navbar>
+
+        <div class="wrapper">
+          <a href="#" class="logo">
+            <img src="./assets/images/logo.jpg" width="162" height="50" alt="EduWeb logo">
+          </a>
+
+          <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+          </button>
+        </div>
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <a href="index.html" class="navbar-link" data-nav-link style="font-size: larger;"> Home</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="about.html" class="navbar-link" data-nav-link style="font-size: larger;">About</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="ourmentor.html" class="navbar-link" data-nav-link style="font-size: larger;">Our Mentors</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="program.html" class="navbar-link" data-nav-link style="font-size: larger;"> Program</a>
+          </li>
+
+
+          <li class="navbar-item">
+            <a href="contact.html" class="navbar-link" data-nav-link style="font-size: larger;">Contact</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="career.html" class="navbar-link" data-nav-link style="font-size: larger;">Career</a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <div class="header-actions" id="headerActions">
+        <script>
+          function checkLoggedIn() {
+            const token = document.cookie.split('; ').find(row => row.startsWith('jwt='));
+           console.log(token);
+            if (token) {
+              const decodedToken = parseJwt(token.split('=')[1]);
+              const username = decodedToken.email; // Assuming the JWT token contains the email
+              document.getElementById('headerActions').innerHTML = `
+                <p>Welcome, ${username}</p>
+                <a href="/logout">Logout</a>
+              `;
+            } else {
+              document.getElementById('headerActions').innerHTML = `
+                <a href="/login">Login</a>
+                <a href="/signup">Signup</a>
+              `;
+            }
+          }
+          
+          function parseJwt(token) {
+            const base64Url = token.split('.')[1];
+            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            const jsonPayload = decodeURIComponent(atob(base64).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+            return JSON.parse(jsonPayload);
+          }
+          
+          window.onload = checkLoggedIn;
+          
+        </script> </div>
+  </header>
+ <!--contact start-->
+ 
+<img src="./assets/images/hero-shape-2.png" width="622" height="551" alt="" class="shape hero-shape-2">
+ <div class="containerr"  style="margin: auto; margin-top: 200px; margin-bottom: 100px;">
+  <div class="contentt">
+    <div class="left-side">
+      <div class="address details">
+        <i class="fas fa-map-marker-alt"></i>
+        <div class="topic">Address</div>
+        <div class="text-one">Noida sector 62</div>
+        <div class="text-two">India</div>
+      </div>
+      <div class="phone details">
+        <i class="fas fa-phone-alt"></i>
+        <div class="topic">Phone</div>
+        <div class="text-one">+91 76675 27670</div>
+       
+      </div>
+      <div class="email details">
+        <i class="fas fa-envelope"></i>
+        <div class="topic">Email</div>
+        <div class="text-one">info@guiderbhaiya.com</div>
+      </div>
+    </div>
+    <div class="right-side">
+      <div class="topic-text" style="color: hsl(351, 83%, 61%) ;">Send us a message</div>
+      <p>If you have any query then contact us....</p>
+      <form action="mail.php" method="post"  flex-direction: column; margin-top: 50px;>
+        <div class="input-box">
+          <input type="text" name="name" placeholder="Enter your name" />
+        </div>
+        <div class="input-box">
+          <input type="text" name="email" placeholder="Enter your email" />
+        </div>
+        <div class="input-box message-box">
+          <textarea name="message" placeholder="Enter your message"></textarea>
+        </div>
+        
+        <a href="#" class="btn has-before" style=" margin-top: 15px;">
+          <span class="span" style="color: black; height: 20px; text-align: center;">Submit</span>
+        </a>
+      </form>
+    </div>
+    
+    
+  </div>
+</div>
+ <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer" style="background-image: url('./assets/images/footer-bg.png')">
+
+    <div class="footer-top section" style="margin-bottom: 10px;">
+      <div class="container grid-list">
+
+        <div class="footer-brand">
+
+          <a href="#" class="logo">
+            <img src="./assets/images/logo.jpg" width="162" height="30" alt="EduWeb logo" style="border-radius: 20%; height: 80px; width: 100px;">
+          </a>
+
+
+          <div class="wrapper" style="margin-top: 20px;">
+            <span class="span">Add:</span>
+
+            <address class="address">Noida sector 62, India</address>
+          </div>
+
+          <div class="wrapper">
+            <span class="span">Call:</span>
+
+            <a href="tel:+011234567890" class="footer-link">+91 76675 27670</a>
+          </div>
+
+          <div class="wrapper">
+            <span class="span">Email:</span>
+
+            <a href="mailto:info@eduweb.com" class="footer-link">info@guiderbhaiya.com</a>
+          </div>
+
+        </div>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title"> Platform</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">About</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Courses</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Instructor</a>
+          </li>
+
+
+          <li>
+            <a href="#" class="footer-link">Purchase Guide</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Links</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Contact Us</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Gallery</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Career</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">FAQ's</a>
+          </li>
+
+        </ul>
+
+        <div class="footer-list">
+
+          <p class="footer-list-title">Contacts</p>
+
+          <p class="footer-list-text">
+            Enter your email address to register to our newsletter subscription
+          </p>
+
+          <form action="" class="newsletter-form">
+            <input type="email" name="email_address" placeholder="Your email" required class="input-field">
+
+            <button type="submit" class="btn has-before">
+              <span class="span" style="color: black;">Subscribe</span>
+
+              <ion-icon name="arrow-forward-outline" aria-hidden="true" style="color: black;"></ion-icon>
+            </button>
+          </form>
+
+          <ul class="social-list">
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="https://www.linkedin.com/company/guider-bhaiya/" class="social-link">
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="https://www.instagram.com/guider_bhaiya?igsh=MWttZ2prN2dlMTJ6cg==" class="social-link">
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-youtube"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+
+        <p class="copyright">
+          Copyright 2024 All Rights Reserved by <a href="#" class="copyright-link">RitikaSingh</a>
+        </p>
+
+      </div>
+    </div>
+
+  </footer>
+
+
+
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="back top top" data-back-top-btn>
+    <ion-icon name="chevron-up" aria-hidden="true" style="color: black;"></ion-icon>
+  </a>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/script.js" defer></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guider bhiya/ Career</title>
+    <!-- 
+    - favicon
+  -->
+  <link rel=" icon" href="assets/images/logo.jpg" >
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/style.css">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&family=Poppins:wght@400;500&display=swap"
+    rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- 
+    - preload images
+  -->
+  <link rel="preload" as="image" href="./assets/images/hero-bg.svg">
+  <link rel="preload" as="image" href="./assets/images/studygirl.avif">
+  <link rel="preload" as="image" href="./assets/images/hero-banner-2.jpg">
+  <link rel="preload" as="image" href="./assets/images/hero-shape-1.svg">
+  <link rel="preload" as="image" href="./assets/images/hero-shape-2.png">
+  <style>
+ 
+    .containerr {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .job {
+      margin-bottom: 20px;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+    }
+    .job h2 {
+      color: #555;
+    }
+    .job p {
+      color: #777;
+    }
+    .apply-button {
+      display: block;
+      width: 100%;
+      max-width: 200px;
+      margin: 10px auto;
+      padding: 10px;
+      text-align: center;
+      background-color:hsl(42, 94%, 55%);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .apply-button:hover {
+      background-color:hsl(42, 72%, 63%);
+    }
+  </style>
+</head>
+<body id="top">
+      <!-- 
+    - #HEADER
+  -->
+  <header class="header" data-header>
+    <div class="container">
+
+      <a href="#" class="logo">
+        <img src="./assets/images/logo.jpg" width="162" height="50" alt="EduWeb logo" >
+      </a>
+
+      <nav class="navbar" data-navbar>
+
+        <div class="wrapper">
+          <a href="#" class="logo">
+            <img src="./assets/images/logo.jpg" width="162" height="50" alt="EduWeb logo">
+          </a>
+
+          <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+          </button>
+        </div>
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <a href="index.html" class="navbar-link" data-nav-link style="font-size: larger;"> Home</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="about.html" class="navbar-link" data-nav-link style="font-size: larger;">About</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="ourmentor.html" class="navbar-link" data-nav-link style="font-size: larger;">Our Mentors</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="program.html" class="navbar-link" data-nav-link style="font-size: larger;"> Program</a>
+          </li>
+
+
+          <li class="navbar-item">
+            <a href="contact.html" class="navbar-link" data-nav-link style="font-size: larger;">Contact</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="career.html" class="navbar-link" data-nav-link style="font-size: larger;">Career</a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <div class="header-actions" id="headerActions">
+        <script>
+          function checkLoggedIn() {
+            const token = document.cookie.split('; ').find(row => row.startsWith('jwt='));
+           console.log(token);
+            if (token) {
+              const decodedToken = parseJwt(token.split('=')[1]);
+              const username = decodedToken.email; // Assuming the JWT token contains the email
+              document.getElementById('headerActions').innerHTML = `
+                <p>Welcome, ${username}</p>
+                <a href="/logout">Logout</a>
+              `;
+            } else {
+              document.getElementById('headerActions').innerHTML = `
+                <a href="/login">Login</a>
+                <a href="/signup">Signup</a>
+              `;
+            }
+          }
+          
+          function parseJwt(token) {
+            const base64Url = token.split('.')[1];
+            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            const jsonPayload = decodeURIComponent(atob(base64).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+            return JSON.parse(jsonPayload);
+          }
+          
+          window.onload = checkLoggedIn;
+          
+        </script> </div>
+  </header>
+
+
+  <div class="containerr" style="margin-top: 200px;">
+    <h1>Join Our Team</h1>
+    <div class="job">
+      <h2>Software Engineer</h2>
+      <p>We are looking for a skilled software engineer to join our development team.</p>
+      <a href="apply.html"><button class="apply-button">Apply Now</button> </a>
+    </div>
+    <div class="job">
+      <h2>Marketing Specialist</h2>
+      <p>We are seeking a creative and analytical marketing specialist to help promote our products.</p>
+       <a href="apply.html"><button class="apply-button">Apply Now</button> </a>
+    </div>
+
+    <div class="job">
+      <h2> Intern SDE</h2>
+      <p> Shape the future of software development with your creativity and analytical thinking.</p>
+       <a href="apply.html"><button class="apply-button">Apply Now</button> </a>
+    </div>
+
+    <div class="job">
+      <h2> SDE </h2>
+      <p> Drive product success through innovative marketing strategies grounded in software development expertise</p>
+       <a href="apply.html"><button class="apply-button">Apply Now</button> </a>
+    </div>
+
+    <div class="job">
+      <h2>Graphics Designer</h2>
+      <p>Elevate our brand with visually stunning marketing materials blending creativity and analytical precision. </p>
+       <a href="apply.html"><button class="apply-button">Apply Now</button> </a>
+    </div>
+
+    <div class="job">
+      <h2>Video Editor </h2>
+      <p> Capture audiences with captivating visual content, merging creativity and analytical finesse.</p>
+       <a href="apply.html"><button class="apply-button">Apply Now</button> </a>
+    </div>
+
+    <div class="job">
+      <h2>Guider/Mentor</h2>
+      <p> Inspire and guide our team to success, blending creative mentorship with analytical leadership.</p>
+       <a href="apply.html"><button class="apply-button">Apply Now</button> </a>
+    </div>
+
+    <div class="job">
+      <h2>SME - Physics </h2>
+      <p>Illuminate the world of physics through creative marketing strategies driven by analytical prowess. </p>
+       <a href="apply.html"><button class="apply-button">Apply Now</button> </a>
+    </div>
+
+    <div class="job">
+      <h2>SME - Chemistry</h2>
+      <p>Transform chemistry into compelling content with creative marketing fueled by analytical insights. </p>
+       <a href="apply.html"><button class="apply-button">Apply Now</button> </a>
+    </div>
+
+    <div class="job">
+      <h2> SME - Maths</h2>
+      <p> Unravel the beauty of mathematics through creative storytelling anchored in analytical rigor.</p>
+       <a href="apply.html"><button class="apply-button">Apply Now</button> </a>
+    </div>
+
+    <div class="job">
+      <h2> SME - Biology </h2>
+      <p> Explore the wonders of biology through creative marketing narratives enriched by analytical understanding.</p>
+       <a href="apply.html"><button class="apply-button">Apply Now</button> </a>
+    </div>
+    <!-- Add more job listings as needed -->
+  </div>
+
+ <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer" style="background-image: url('./assets/images/footer-bg.png')">
+
+    <div class="footer-top section" style="margin-bottom: 10px;">
+      <div class="container grid-list">
+
+        <div class="footer-brand">
+
+          <a href="#" class="logo">
+            <img src="./assets/images/logo.jpg" width="162" height="30" alt="EduWeb logo" style="border-radius: 20%; height: 80px; width: 100px;">
+          </a>
+
+
+          <div class="wrapper" style="margin-top: 20px;">
+            <span class="span">Add:</span>
+
+            <address class="address">Noida sector 62, India</address>
+          </div>
+
+          <div class="wrapper">
+            <span class="span">Call:</span>
+
+            <a href="tel:+011234567890" class="footer-link">+91 76675 27670</a>
+          </div>
+
+          <div class="wrapper">
+            <span class="span">Email:</span>
+
+            <a href="mailto:info@eduweb.com" class="footer-link">info@guiderbhaiya.com</a>
+          </div>
+
+        </div>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title"> Platform</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">About</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Courses</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Instructor</a>
+          </li>
+
+
+          <li>
+            <a href="#" class="footer-link">Purchase Guide</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Links</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Contact Us</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Gallery</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Career</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">FAQ's</a>
+          </li>
+
+        </ul>
+
+        <div class="footer-list">
+
+          <p class="footer-list-title">Contacts</p>
+
+          <p class="footer-list-text">
+            Enter your email address to register to our newsletter subscription
+          </p>
+
+          <form action="" class="newsletter-form">
+            <input type="email" name="email_address" placeholder="Your email" required class="input-field">
+
+            <button type="submit" class="btn has-before">
+              <span class="span" style="color: black;">Subscribe</span>
+
+              <ion-icon name="arrow-forward-outline" aria-hidden="true" style="color: black;"></ion-icon>
+            </button>
+          </form>
+
+          <ul class="social-list">
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="https://www.linkedin.com/company/guider-bhaiya/" class="social-link">
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="https://www.instagram.com/guider_bhaiya?igsh=MWttZ2prN2dlMTJ6cg==" class="social-link">
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-youtube"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+
+        <p class="copyright">
+          Copyright 2024 All Rights Reserved by <a href="#" class="copyright-link">RitikaSingh</a>
+        </p>
+
+      </div>
+    </div>
+
+  </footer>
+
+
+
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="back top top" data-back-top-btn>
+    <ion-icon name="chevron-up" aria-hidden="true" style="color: black;"></ion-icon>
+  </a>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/script.js" defer></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Application Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+      }
+      .container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+      }
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+      textarea {
+        height: 100px;
+      }
+      .file-input {
+        margin-bottom: 20px;
+      }
+      .submit-button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: hsl(42, 94%, 55%);
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .submit-button:hover {
+        background-color: hsl(42, 94%, 55%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Apply for a Job</h1>
+      <form id="submit-application-form" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="mobile">Mobile:</label>
+        <input type="tel" id="mobile" name="mobile" required />
+
+        <label for="profile">Profile Applying for:</label>
+        <select id="profile" name="profile" required>
+          <option value="select">Select</option>
+          <option value="Intern SDE">Intern SDE</option>
+          <!-- Add other options here -->
+        </select>
+
+        <label for="location">Current Location:</label>
+        <input type="text" id="location" name="location" required />
+
+        <label for="salary">Current Salary:</label>
+        <input type="text" id="salary" name="salary" required />
+
+        <label for="skills">Skills:</label>
+        <textarea id="skills" name="skills" required></textarea>
+
+        <label for="experience">Experience:</label>
+        <textarea id="experience" name="experience" required></textarea>
+
+        <label for="brief">Brief Why we should hire you?</label>
+        <textarea id="brief" name="brief" required></textarea>
+
+        <label for="resume">Attach Resume Link:</label>
+        <input type="text" id="resume" name="resume" required />
+
+        <input type="submit" value="Submit Application" class="submit-button" />
+      </form>
+    </div>
+
+    <script>
+      document
+        .getElementById("submit-application-form")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault(); // Prevent form submission
+
+          try {
+            // Collect form data
+
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const mobile = document.getElementById("mobile").value;
+            const location = document.getElementById("location").value;
+            const salary = document.getElementById("salary").value;
+            const skills = document.getElementById("skills").value;
+            const experience = document.getElementById("experience").value;
+            const brief = document.getElementById("brief").value;
+            const resume = document.getElementById("resume").value;
+            console.log(name, email);
+            const profileSelect = document.getElementById("profile");
+            const selectedProfile = profileSelect.value;
+            console.log(selectedProfile);
+            // Accessing selected option from select element
+            const formData = {
+              name: name,
+              email: email,
+              mobile: mobile,
+              profile: selectedProfile,
+              location: location,
+              salary: salary,
+              skills: skills,
+              experience: experience,
+              brief: brief,
+              resume: resume,
+            };
+            console.log("Form data:", formData);
+
+            const response = await fetch("/submit-application", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) {
+              throw new Error("Failed to submit application");
+            }
+
+            const data = await response.json();
+            alert(data.message); // Display success message
+          } catch (error) {
+            console.error("Error processing form data:", error);
+            alert("Failed to process form data. Please try again.");
+          }
+        });
+    </script>
+  </body>
+</html>

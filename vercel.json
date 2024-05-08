@@ -12,8 +12,6 @@
         "dest": "/"
       }
     ],
-    "env": {
-      "MONGODB_URI": "mongodb+srv://nagpuresaurabh1610:guiderbhaiya%4023@cluster0.1nztzl7.mongodb.net/guider"
-    }
+    
   }
   

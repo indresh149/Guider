@@ -1,5 +1,4 @@
-
-require("dotenv").config()
+require("dotenv").config();
 import("chalk").then((chalk) => {
   const express = require("express");
   const bodyParser = require("body-parser");
@@ -7,15 +6,14 @@ import("chalk").then((chalk) => {
   const bcrypt = require("bcryptjs");
   const jwt = require("jsonwebtoken");
   const path = require("path"); // Import the path module
-  const cookieParser = require('cookie-parser');
+  const cookieParser = require("cookie-parser");
   const app = express();
   const port = process.env.PORT || 3000;
-  
+
   // Middleware
   app.use(cookieParser());
   app.use(express.static(path.join(__dirname)));
   app.use(bodyParser.json());
-  
 
   // MongoDB connection
   mongoose.connect(process.env.MONGODB_URI, {
@@ -37,16 +35,16 @@ import("chalk").then((chalk) => {
 
     // Check if token exists
     if (!token) {
-      return res.redirect('/login'); // Redirect to login page if token is missing
+      return res.redirect("/login"); // Redirect to login page if token is missing
     }
 
     try {
       // Verify the token
-      const decoded = jwt.verify(token, 'your_secret_key');
+      const decoded = jwt.verify(token, "your_secret_key");
       req.user = decoded;
       next(); // Proceed to next middleware or route handler
     } catch (error) {
-      res.redirect('/login'); // Redirect to login page if token is invalid
+      res.redirect("/login"); // Redirect to login page if token is invalid
     }
   };
 
@@ -105,6 +103,22 @@ import("chalk").then((chalk) => {
     resume: String,
   });
   const Application = mongoose.model("Application", applicationSchema);
+  const messageSchema = new mongoose.Schema({
+    name: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    message: {
+      type: String,
+      required: true,
+    },
+  });
+
+  const Message = mongoose.model("Message", messageSchema);
 
   // Middleware
 
@@ -142,51 +156,73 @@ import("chalk").then((chalk) => {
     const token = jwt.sign({ email: user.email }, "your_secret_key");
     res.json({ token });
   });
- 
 
   // API endpoint for handling form submission
   app.post("/submit-application", async (req, res) => {
-    try { // Extract data from the request body
-    const {
-      name,
-      email,
-      mobile,
-      profile,
-      location,
-      salary,
-      skills,
-      experience,
-      brief,
-      resume,
-    } = req.body;
-    console.log(req.body);
-  console.log(name, email, mobile, profile, location, salary, skills, experience, brief, resume);
+    try {
+      // Extract data from the request body
+      const {
+        name,
+        email,
+        mobile,
+        profile,
+        location,
+        salary,
+        skills,
+        experience,
+        brief,
+        resume,
+      } = req.body;
+      console.log(req.body);
+      console.log(
+        name,
+        email,
+        mobile,
+        profile,
+        location,
+        salary,
+        skills,
+        experience,
+        brief,
+        resume
+      );
 
-    // Check if all fields are filled
-    if(!name || !email || !mobile || !profile || !location || !salary || !skills || !experience || !brief || !resume) {
-      console.log("Please fill all fields");
-      return res.status(400).json({ error: "Please fill all fields" });
-    }
-  
-    // Create a new application instance
-    const newApplication = new Application({
-      name,
-      email,
-      mobile,
-      profile,
-      location,
-      salary,
-      skills,
-      experience,
-      brief,
-      resume,
-    });
-  
-    // Save the application to the database
-   console.log(newApplication);
+      // Check if all fields are filled
+      if (
+        !name ||
+        !email ||
+        !mobile ||
+        !profile ||
+        !location ||
+        !salary ||
+        !skills ||
+        !experience ||
+        !brief ||
+        !resume
+      ) {
+        console.log("Please fill all fields");
+        return res.status(400).json({ error: "Please fill all fields" });
+      }
+
+      // Create a new application instance
+      const newApplication = new Application({
+        name,
+        email,
+        mobile,
+        profile,
+        location,
+        salary,
+        skills,
+        experience,
+        brief,
+        resume,
+      });
+
+      // Save the application to the database
+      console.log(newApplication);
 
       await newApplication.save();
-  
+
       // Respond with success message
       res.status(201).json({ message: "Application submitted successfully" });
     } catch (error) {
@@ -212,7 +248,7 @@ import("chalk").then((chalk) => {
     try {
       // Extract data from the request body
       const { name, email, contact1, contact2, course } = req.body;
-       console.log(req.body);
+      console.log(req.body);
       // Create a new student instance
       const newStudent = new Student({
         name,
@@ -221,24 +257,47 @@ import("chalk").then((chalk) => {
         contact2,
         course,
       });
-  
 
       // Save the student to the database
       await newStudent.save();
-   
+
       // Respond with success message
       res.status(201).json({ message: "Application submitted successfully" });
     } catch (error) {
       res.status(500).json({ error: "Failed to submit application" });
     }
   });
-// Add a logout route
-app.get("/logout", (req, res) => {
-  // Clear the jwt cookie
-  res.clearCookie("jwt");
-  // Redirect to login page
-  res.redirect("/login");
-});
+  app.post('/submit-message', async (req, res) => {
+    try {
+      const { name, email, message } = req.body;
+         console.log(req.body);
+         
+      // Check if any required fields are missing
+      if (!name || !email || !message) {
+        return res.status(400).json({ error: 'Please fill all fields' });
+      }
+  
+      // Create a new message instance
+      const newMessage = new Message({ name, email, message });
+  
+      // Save the message to the database
+      await newMessage.save();
+  
+      // Return success response
+      res.status(201).json({ message: 'Message submitted successfully' });
+    } catch (error) {
+      // Handle any errors
+      console.error('Error submitting message:', error);
+      res.status(500).json({ error: 'Failed to submit message' });
+    }
+  })
+  // Add a logout route
+  app.get("/logout", (req, res) => {
+    // Clear the jwt cookie
+    res.clearCookie("jwt");
+    // Redirect to login page
+    res.redirect("/login");
+  });
 
   app.listen(port, () => {
     console.log(chalk.default.green(`Server is running on port ${port}`));

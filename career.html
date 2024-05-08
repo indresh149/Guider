@@ -80,87 +80,101 @@
       <!-- 
     - #HEADER
   -->
-  <header class="header" data-header>
-    <div class="container">
-
+-->
+<header class="header" data-header>
+  <div class="container">
       <a href="#" class="logo">
-        <img src="./assets/images/logo.jpg" width="162" height="50" alt="EduWeb logo" >
+          <img src="./assets/images/logo.jpg" width="162" height="50" alt="EduWeb logo">
       </a>
-
       <nav class="navbar" data-navbar>
-
-        <div class="wrapper">
-          <a href="#" class="logo">
-            <img src="./assets/images/logo.jpg" width="162" height="50" alt="EduWeb logo">
-          </a>
-
-          <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
-            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
-          </button>
-        </div>
-
-        <ul class="navbar-list">
-
-          <li class="navbar-item">
-            <a href="index.html" class="navbar-link" data-nav-link style="font-size: larger;"> Home</a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="about.html" class="navbar-link" data-nav-link style="font-size: larger;">About</a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="ourmentor.html" class="navbar-link" data-nav-link style="font-size: larger;">Our Mentors</a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="program.html" class="navbar-link" data-nav-link style="font-size: larger;"> Program</a>
-          </li>
-
-
-          <li class="navbar-item">
-            <a href="contact.html" class="navbar-link" data-nav-link style="font-size: larger;">Contact</a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="career.html" class="navbar-link" data-nav-link style="font-size: larger;">Career</a>
-          </li>
-
-        </ul>
-
+          <div class="wrapper">
+              <a href="#" class="logo">
+                  <img src="./assets/images/logo.jpg" width="162" height="50" alt="EduWeb logo">
+              </a>
+              <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+                  <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+              </button>
+          </div>
+          <ul class="navbar-list">
+              <li class="navbar-item">
+                  <a href="index.html" class="navbar-link" data-nav-link style="font-size: larger;"> Home</a>
+              </li>
+              <li class="navbar-item">
+                  <a href="about.html" class="navbar-link" data-nav-link style="font-size: larger;">About</a>
+              </li>
+              <li class="navbar-item">
+                  <a href="ourmentor.html" class="navbar-link" data-nav-link style="font-size: larger;">Our Mentors</a>
+              </li>
+              <li class="navbar-item">
+                  <a href="program.html" class="navbar-link" data-nav-link style="font-size: larger;"> Program</a>
+              </li>
+              <li class="navbar-item">
+                  <a href="contact.html" class="navbar-link" data-nav-link style="font-size: larger;">Contact</a>
+              </li>
+              <li class="navbar-item">
+                  <a href="career.html" class="navbar-link" data-nav-link style="font-size: larger;">Career</a>
+              </li>
+              <!-- Logout link -->
+              <li class="navbar-item" id="logoutLink" style="display: block;">
+                  <a href="/logout" class="navbar-link" data-nav-link style="font-size: larger;">Logout</a>
+              </li>
+              <!-- Login link -->
+              <li class="navbar-item" id="loginLink" style="display: none;">
+                  <a href="/login" class="navbar-link" data-nav-link style="font-size: larger;">Login</a>
+              </li>
+              <!-- Signup link -->
+              <li class="navbar-item" id="signupLink" style="display: none;">
+                  <a href="/signup" class="navbar-link" data-nav-link style="font-size: larger;">Signup</a>
+              </li>
+          </ul>
       </nav>
+      <div class="header-actions">
+        <a href="#" id="try" syle ="display:block"class="btn has-before">
+            <span class="span" style="color: black;">Try for free</span>
+            <ion-icon name="arrow-forward-outline" aria-hidden="true" style="color: black;"></ion-icon>
+        </a>
+        <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
+            <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+        </button>
+    </div>
+    <div class="overlay" data-nav-toggler data-overlay></div>
+</div>
+</header>
 
-      <div class="header-actions" id="headerActions">
-        <script>
-          function checkLoggedIn() {
-            const token = document.cookie.split('; ').find(row => row.startsWith('jwt='));
-           console.log(token);
-            if (token) {
-              const decodedToken = parseJwt(token.split('=')[1]);
-              const username = decodedToken.email; // Assuming the JWT token contains the email
-              document.getElementById('headerActions').innerHTML = `
-                <p>Welcome, ${username}</p>
-                <a href="/logout">Logout</a>
-              `;
-            } else {
-              document.getElementById('headerActions').innerHTML = `
-                <a href="/login">Login</a>
-                <a href="/signup">Signup</a>
-              `;
-            }
-          }
-          
-          function parseJwt(token) {
-            const base64Url = token.split('.')[1];
-            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-            const jsonPayload = decodeURIComponent(atob(base64).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
-            return JSON.parse(jsonPayload);
-          }
-          
-          window.onload = checkLoggedIn;
-          
-        </script> </div>
-  </header>
+<!-- Your other HTML content goes here -->
+
+<!-- Scripts -->
+<script>
+  // Function to check if the user is logged in
+  function checkLoggedIn() {
+      const token = document.cookie.split('; ').find(row => row.startsWith('jwt='));
+      console.log(token);
+      if (token) {
+          const decodedToken = parseJwt(token.split('=')[1]);
+          const username = decodedToken.email; // Assuming the JWT token contains the email
+          document.getElementById('logoutLink').style.display = 'block'; // Show logout link
+          document.getElementById('loginLink').style.display = 'none'; // Hide login link
+          document.getElementById('signupLink').style.display = 'none';  
+          document.getElementById('try').style.display = 'none'; // Hide signup link
+      } else {
+          document.getElementById('logoutLink').style.display = 'none'; // Hide logout link
+          document.getElementById('loginLink').style.display = 'block'; // Show login link
+          document.getElementById('signupLink').style.display = 'block'; 
+          document.getElementById('try').style.display = 'block';// Show signup link
+      }
+  }
+
+  // Function to parse JWT token
+  function parseJwt(token) {
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(atob(base64).split('').map(c => '%' + ('00' + c.charCodeAt(0)).slice(-2)).join(''));
+      return JSON.parse(jsonPayload);
+  }
+
+  // Call checkLoggedIn function when the window loads
+  window.onload = checkLoggedIn;
+</script>
 
 
   <div class="containerr" style="margin-top: 200px;">
